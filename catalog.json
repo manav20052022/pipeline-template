@@ -2,8 +2,8 @@
   "branchOrTag" : "master",
   "scm" : {
     "$class" : "GitHubSCMSource",
-    "credentialsId" : "my-team-git-credentials",
-    "repoOwner" : "sb-courses",
+    "credentialsId" : "githubcreds",
+    "repoOwner" : "stubrown-demos",
     "repository" : "pipeline-template-catalogs",
     "traits" : [ {
       "$class" : "org.jenkinsci.plugins.github_branch_source.BranchDiscoveryTrait",
