@@ -1,3 +1,5 @@
 .DS_Store
 templates/.DS_Store
 jenkins-cli.jar
+.idea/
+pipeline-template-catalogs.iml
