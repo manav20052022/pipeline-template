@@ -1,6 +1,6 @@
 type: pipeline-template
 version: 1
-name: Advanced Java Pipeline 
+name: Maven Java Pipeline
 templateType: MULTIBRANCH
 parameters:
   - name: repoName
