@@ -16,11 +16,6 @@ spec:
     command:
     - cat
     tty: true
-  - name: busybox
-    image: busybox
-    command:
-    - cat
-    tty: true
 """
         }
     }
@@ -35,4 +30,13 @@ spec:
       }
     }
   }
+  stages {
+    stage('Run maven') {
+      steps {
+        container('maven') {
+          sh 'mvn build'
+        }
+      }
+    }
+  }   
 }
