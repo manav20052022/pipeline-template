@@ -32,7 +32,7 @@ spec:
       stage('Run maven') {
           steps {
               container('maven') {
-                  sh 'mvn build'
+                  sh 'mvn compile'
               }
           }
       }
