@@ -32,7 +32,8 @@ spec:
       stage('Run maven') {
           steps {
               container('maven') {
-                  sh 'mvn compile'
+                    configFileProvider([configFile(fileId: 'mvn_set', variable: 'MAVEN_SETTINGS_XML')]) {
+                        sh "mvn -s $MAVEN_SETTINGS_XML compile"
               }
           }
       }
