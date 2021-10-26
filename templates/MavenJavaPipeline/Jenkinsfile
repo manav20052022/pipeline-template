@@ -19,25 +19,25 @@ spec:
 """
         }
     }
-  stages {
-      stage('Build') {
-          steps {
-              sh """
+    stages {
+        stage('Build') {
+            steps {
+                sh """
         echo "Repo Owner: ${repoOwner}"
         echo "Repo Name : ${repoName}"
         echo "Repo Creds: ${repoCreds}"
         """
-          }
-      }
-      stage('Run maven') {
-          steps {
-              container('maven') {
+            }
+        }
+        stage('Run maven') {
+            steps {
+                container('maven') {
                     configFileProvider([configFile(fileId: 'mvn_set', variable: 'MAVEN_SETTINGS_XML')]) {
                         sh "mvn -s $MAVEN_SETTINGS_XML compile"
-              }
-          }
-          }
-      }
-      }
-  }
+                    }
+                }
+            }
+        }
+    }
 }
+
