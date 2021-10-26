@@ -36,6 +36,8 @@ spec:
                         sh "mvn -s $MAVEN_SETTINGS_XML compile"
               }
           }
+          }
+      }
       }
   }
 }
