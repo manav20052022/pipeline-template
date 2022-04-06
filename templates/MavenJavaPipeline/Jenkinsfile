@@ -20,7 +20,7 @@ spec:
         }
     }
     stages {
-        stage('Build') {
+        stage('Check env') {
             steps {
                 sh """
         echo "Repo Owner: ${repoOwner}"
@@ -29,7 +29,7 @@ spec:
         """
             }
         }
-        stage('Run maven') {
+        stage('Build') {
             steps {
                 container('maven') {
                     //configFileProvider([configFile(fileId: 'mvn_set', variable: 'MAVEN_SETTINGS_XML')]) {
