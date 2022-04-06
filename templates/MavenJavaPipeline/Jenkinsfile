@@ -34,6 +34,7 @@ spec:
                 container('maven') {
                     //configFileProvider([configFile(fileId: 'mvn_set', variable: 'MAVEN_SETTINGS_XML')]) {
                         sh "mvn -version"
+                        sh "mvn compile"
                     //}
                 }
             }
