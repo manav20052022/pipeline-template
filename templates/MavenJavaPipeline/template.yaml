@@ -18,3 +18,4 @@ multibranch:
       repoOwner: ${repoOwner}
       repository: ${repoName}
       credentialsId: ${repoCreds}
+  scanRepositoryInterval: 5 minute
