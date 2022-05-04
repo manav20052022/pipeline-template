@@ -1,4 +1,7 @@
 pipeline {
+    triggers {
+        cron('H/15 * * * *')
+    }
     agent {
         kubernetes {
             label 'my-pod-template'
