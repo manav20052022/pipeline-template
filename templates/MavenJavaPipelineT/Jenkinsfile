@@ -1,0 +1,44 @@
+pipeline {
+    agent {
+        kubernetes {
+            label 'my-pod-template'
+            defaultContainer 'jnlp'
+            yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    some-label: some-label-value
+spec:
+  containers:
+  - name: maven
+    image: maven:alpine
+    command:
+    - cat
+    tty: true
+"""
+        }
+    }
+    stages {
+        stage('Check env') {
+            steps {
+                sh """
+        echo "Repo Owner: ${repoOwner}"
+        echo "Repo Name : ${repoName}"
+        echo "Repo Creds: ${repoCreds}"
+        """
+            }
+        }
+        stage('Build') {
+            steps {
+                container('maven') {
+                    //configFileProvider([configFile(fileId: 'mvn_set', variable: 'MAVEN_SETTINGS_XML')]) {
+                        sh "mvn -version"
+                        sh "mvn compile"
+                    //}
+                }
+            }
+        }
+    }
+}
+
