@@ -23,6 +23,7 @@ spec:
         stage('Build') {
             steps {
                 sh """
+        echo "these are all variables supplied vis the configuration of each job"
         echo "Repo Owner: ${repoOwner}"
         echo "Repo Name : ${repoName}"
         echo "Repo Creds: ${repoCreds}"
