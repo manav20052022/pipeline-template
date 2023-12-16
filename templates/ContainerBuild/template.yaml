@@ -16,11 +16,11 @@ parameters:
   - name: imageOrg
     type: string
     displayName: Image Organisation (eg docker repo)
-    default: gururepservice
+    default: "gururepservice"
   - name: imageRepo
     type: string
     displayName: Image Repo (eg docker repo)
-    default: gapi
+    default: "gapi"
 multibranch:
   branchSource:
     github:
