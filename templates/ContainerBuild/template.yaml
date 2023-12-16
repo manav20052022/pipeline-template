@@ -13,6 +13,7 @@ parameters:
   - name: repoCreds
     type: string
     displayName: Jenkins credentials id for build (these must already exist)
+    defaultValue: gururepservice-cred
   - name: imageOrg
     type: string
     displayName: Image Organisation (eg docker repo)
