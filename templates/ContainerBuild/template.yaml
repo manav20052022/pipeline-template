@@ -1,5 +1,5 @@
 type: pipeline-template
-version: 1
+version: 2
 name: ContainerBuild
 displayName: Container Build Pipeline
 templateType: MULTIBRANCH
