@@ -12,7 +12,15 @@ parameters:
     displayName: Repo owner (this may be an org owner)
   - name: repoCreds
     type: string
-    displayName: Jenkins credentials id for build (these must already exist) 
+    displayName: Jenkins credentials id for build (these must already exist)
+  - name: imageOrg
+    type: string
+    displayName: Image Organisation (eg docker repo)
+    default: gururepservice
+  - name: imageRepo
+    type: string
+    displayName: Image Repo (eg docker repo)
+    default: gapi
 multibranch:
   branchSource:
     github:

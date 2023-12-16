@@ -23,9 +23,11 @@ spec:
         stage('Build') {
             steps {
                 sh """
-        echo "Repo Owner: ${repoOwner}"
-        echo "Repo Name : ${repoName}"
-        echo "Repo Creds: ${repoCreds}"
+        echo "Repo Owner:          ${repoOwner}"
+        echo "Repo Name :          ${repoName}"
+        echo "Repo Creds:          ${repoCreds}"
+        echo "Image Org:           ${imageOrg}"
+        echo "Docker Repo:         ${imageRepo}"
         """
             }
         }
@@ -33,6 +35,19 @@ spec:
             steps {
                 container('maven') {
                     sh "hostname"
+                }
+            }
+        }
+        stage('Build with Kaniko') {
+            steps {
+                container(name: 'kaniko', shell: '/busybox/sh') {
+                    withEnv(['PATH+EXTRA=/busybox']) {
+                        sh "pwd"
+                        sh "ls"
+                        sh '''#!/busybox/sh
+                           /kaniko/executor --context `pwd` --destination $DOCKER_DEST/gapi:$BMAJOR.$BUILD_ID
+                        '''
+                    }
                 }
             }
         }
