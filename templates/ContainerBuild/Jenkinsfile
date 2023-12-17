@@ -26,10 +26,10 @@ pipeline {
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
 
-                        sh '''#!/busybox/sh
-                        
+                        sh """#!/busybox/sh
+
                            /kaniko/executor --context `pwd` --destination $DOCKER_DEST/gapi:$BMAJOR.$BUILD_ID
-                        '''
+                        """
                     }
                 }
             }
