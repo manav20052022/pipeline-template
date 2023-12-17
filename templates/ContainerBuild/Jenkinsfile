@@ -16,6 +16,7 @@ pipeline {
         echo "Image Org:           ${imageOrg}"
         echo "Image Repo:          ${imageRepo}"
         echo "Major Build Label:   ${majorBuildLabel}"
+        echo " [$imageOrg/$imageRepo:$majorBuildLabel.$BUILD_ID]"
         """
             }
         }
