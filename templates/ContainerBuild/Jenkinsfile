@@ -11,7 +11,7 @@ pipeline {
       intDebug="${debugPL}"
     }
     stages {
-        stage('Build') {
+        stage('DebugOnly') {
             when {
               environment name: 'intDebug', value: 'true'
             }
