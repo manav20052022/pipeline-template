@@ -28,7 +28,8 @@ pipeline {
                         sh "pwd"
                         sh "ls"
                         sh '''#!/busybox/sh
-                           /kaniko/executor --context `pwd` --destination gururepservice/$imageRepo:1.0.$BUILD_ID
+                        tmp_cmd=$imageOrg/$imageRepo:$majorBuildLabel.$BUILD_ID
+                           /kaniko/executor --context `pwd` --destination $tmp-cmd
                         '''
                     }
                 }
