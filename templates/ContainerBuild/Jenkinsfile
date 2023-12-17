@@ -8,6 +8,9 @@ pipeline {
         }
     stages {
         stage('Build') {
+            when {
+              environment name: 'debugPL', value: 'true'
+            }
             steps {
                 sh """
         echo "Repo Owner:          ${repoOwner}"
@@ -16,7 +19,6 @@ pipeline {
         echo "Image Org:           ${imageOrg}"
         echo "Image Repo:          ${imageRepo}"
         echo "Major Build Label:   ${majorBuildLabel}"
-        echo " [${imageOrg}/${imageRepo}:${majorBuildLabel}.$BUILD_ID]"
         """
             }
         }
