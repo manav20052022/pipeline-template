@@ -25,14 +25,10 @@ pipeline {
             steps {
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
-                        sh "pwd"
-                        sh "ls"
+
                         sh '''#!/busybox/sh
-                        tmp_delim=/
-                        tmp_cmd="${imageOrg}${tmp_delim}${imageRepo}:${majorBuildLabel}.$BUILD_ID"
-                        echo "Image Repo:          $imageRepo"
-                        echo ${tmp_cmd}
-                           /kaniko/executor --context `pwd` --destination $imageOrg/gapi:1.0.$BUILD_ID
+                        
+                           /kaniko/executor --context `pwd` --destination $DOCKER_DEST/gapi:$BMAJOR.$BUILD_ID
                         '''
                     }
                 }
