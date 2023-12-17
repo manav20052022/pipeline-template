@@ -28,7 +28,7 @@ pipeline {
                         sh "pwd"
                         sh "ls"
                         sh '''#!/busybox/sh
-                           /kaniko/executor --context `pwd` --destination $imageOrg/gapi:$majorBuildLabel.$BUILD_ID
+                           /kaniko/executor --context `pwd` --destination gururepservice/gapi:$majorBuildLabel.$BUILD_ID
                         '''
                     }
                 }
