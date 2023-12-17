@@ -30,6 +30,10 @@ parameters:
     type: boolean
     displayName: Debug
     defaultValue: false
+  - name: github_creds
+    displayName: GitHub Credentials ID
+    type: credentials
+    defaultValue: gururepservice-cred
 multibranch:
   branchSource:
     github:
