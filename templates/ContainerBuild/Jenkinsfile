@@ -18,13 +18,7 @@ pipeline {
         """
             }
         }
-        stage('Run maven') {
-            steps {
-                container('maven') {
-                    sh "hostname"
-                }
-            }
-        }
+        
         stage('Build with Kaniko') {
             steps {
                 container(name: 'kaniko', shell: '/busybox/sh') {
