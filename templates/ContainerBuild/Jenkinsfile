@@ -1,4 +1,5 @@
 pipeline {
+
     agent {
             kubernetes {
                 label 'gapi-build'
@@ -6,10 +7,13 @@ pipeline {
                 yamlFile 'KubernetesPod.yaml'
             }
         }
+    environment {
+      intDebug="${debugPL}"
+    }
     stages {
         stage('Build') {
             when {
-              environment name: 'debugPL', value: 'true'
+              environment name: 'intDebug', value: 'true'
             }
             steps {
                 sh """
