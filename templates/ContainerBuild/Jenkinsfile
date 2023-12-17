@@ -29,7 +29,8 @@ pipeline {
                         sh "ls"
                         sh '''#!/busybox/sh
                         tmp_cmd=$imageOrg/$imageRepo:$majorBuildLabel.$BUILD_ID
-                           /kaniko/executor --context `pwd` --destination $tmp-cmd
+                        echo ${tmp_cmd}
+                           /kaniko/executor --context `pwd` --destination ${tmp-cmd
                         '''
                     }
                 }
