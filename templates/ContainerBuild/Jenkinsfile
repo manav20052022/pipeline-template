@@ -28,7 +28,7 @@ pipeline {
 
                         sh """#!/busybox/sh
 
-                           /kaniko/executor --context `pwd` --destination $DOCKER_DEST/gapi:$BMAJOR.$BUILD_ID
+                           /kaniko/executor --context `pwd` --destination $imageOrg/gapi:$majorBuildLabel.$BUILD_ID
                         """
                     }
                 }
