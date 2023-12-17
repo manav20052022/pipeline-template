@@ -30,7 +30,7 @@ pipeline {
                         sh '''#!/busybox/sh
                         tmp_delim=/
                         tmp_cmd="${imageOrg}${tmp_delim}${imageRepo}:${majorBuildLabel}.$BUILD_ID"
-                        echo "Image Repo:          ${imageRepo}"
+                        echo "Image Repo:          $imageRepo"
                         echo ${tmp_cmd}
                            /kaniko/executor --context `pwd` --destination ${tmp-cmd}
                         '''
