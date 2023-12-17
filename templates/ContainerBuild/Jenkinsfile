@@ -16,7 +16,7 @@ pipeline {
         echo "Image Org:           ${imageOrg}"
         echo "Image Repo:          ${imageRepo}"
         echo "Major Build Label:   ${majorBuildLabel}"
-        echo " [$imageOrg/$imageRepo:$majorBuildLabel.$BUILD_ID]"
+        echo " [${imageOrg}/${imageRepo}:${majorBuildLabel}.$BUILD_ID]"
         """
             }
         }
@@ -28,9 +28,10 @@ pipeline {
                         sh "pwd"
                         sh "ls"
                         sh '''#!/busybox/sh
-                        tmp_cmd=$imageOrg/$imageRepo:$majorBuildLabel.$BUILD_ID
+                        tmp_delim=/
+                        tmp_cmd="${imageOrg}${tmp_delim}${imageRepo}:${majorBuildLabel}.$BUILD_ID
                         echo ${tmp_cmd}
-                           /kaniko/executor --context `pwd` --destination ${tmp-cmd
+                           /kaniko/executor --context `pwd` --destination ${tmp-cmd}
                         '''
                     }
                 }
