@@ -32,7 +32,7 @@ pipeline {
                         tmp_cmd="${imageOrg}${tmp_delim}${imageRepo}:${majorBuildLabel}.$BUILD_ID"
                         echo "Image Repo:          $imageRepo"
                         echo ${tmp_cmd}
-                           /kaniko/executor --context `pwd` --destination ${tmp-cmd}
+                           /kaniko/executor --context `pwd` ---destination $imageOrd/gapi:majorBuildLabel.$BUILD_ID
                         '''
                     }
                 }
