@@ -14,8 +14,8 @@ pipeline {
         echo "Repo Name :          ${repoName}"
         echo "Repo Creds:          ${repoCreds}"
         echo "Image Org:           ${imageOrg}"
-        echo "Docker Repo:         ${imageRepo}"
-        echo "Major Build Label:         ${majorBuildLabel}"
+        echo "Image Repo:          ${imageRepo}"
+        echo "Major Build Label:   ${majorBuildLabel}"
         """
             }
         }
