@@ -26,6 +26,10 @@ parameters:
     type: number
     displayName: Major Build Label
     defaultValue: 1.0
+  - name: debugPL
+    type: boolean
+    displayName: Debug
+    defaultValue: false
 multibranch:
   branchSource:
     github:
