@@ -18,7 +18,7 @@ pipeline {
         """
             }
         }
-        
+
         stage('Build with Kaniko') {
             steps {
                 container(name: 'kaniko', shell: '/busybox/sh') {
@@ -26,7 +26,7 @@ pipeline {
                         sh "pwd"
                         sh "ls"
                         sh '''#!/busybox/sh
-                           /kaniko/executor --context `pwd` --destination $DOCKER_DEST/gapi:$BMAJOR.$BUILD_ID
+                           /kaniko/executor --context `pwd` --destination gururepservice/gapi:1.0.$BUILD_ID
                         '''
                     }
                 }
