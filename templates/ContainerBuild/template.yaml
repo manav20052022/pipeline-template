@@ -11,9 +11,8 @@ parameters:
     type: string
     displayName: Repo owner (this may be an org owner)
   - name: repoCreds
-    type: string
+    type: credentials
     displayName: Jenkins credentials id for build (access to pull from repo)
-    defaultValue: gururepservice-cred
   - name: imageOrg
     type: string
     displayName: Image Organisation (eg docker repo)
