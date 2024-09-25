@@ -1,44 +1,40 @@
-// Uses Declarative syntax to run commands inside a container.
 pipeline {
     agent {
         kubernetes {
-            // Rather than inline YAML, in a multibranch Pipeline you could use: yamlFile 'jenkins-pod.yaml'
-            // Or, to avoid YAML:
-            // containerTemplate {
-            //     name 'shell'
-            //     image 'ubuntu'
-            //     command 'sleep'
-            //     args 'infinity'
-            // }
-            yaml '''
+            label 'my-pod-template'
+            defaultContainer 'jnlp'
+            yaml """
 apiVersion: v1
 kind: Pod
+metadata:
+  labels:
+    some-label: some-label-value
 spec:
   containers:
-  - name: shell
-    image: ubuntu
+  - name: maven
+    image: maven:alpine
     command:
-    - sleep
-    args:
-    - infinity
-    securityContext:
-      # ubuntu runs as root by default, it is recommended or even mandatory in some environments (such as pod security admission "restricted") to run as a non-root user.
-      runAsUser: 1000
-'''
-            // Can also wrap individual steps:
-            // container('shell') {
-            //     sh 'hostname'
-            // }
-            defaultContainer 'shell'
-            retries 2
+    - cat
+    tty: true
+"""
         }
     }
     stages {
-        stage('Main') {
+        stage('Build') {
             steps {
-                sh 'hostname'
+                sh """
+        echo "Repo Owner: ${repoOwner}"
+        echo "Repo Name : ${repoName}"
+        echo "Repo Creds: ${repoCreds}"
+        """
+            }
+        }
+        stage('Run maven') {
+            steps {
+                container('maven') {
+                    sh "hostname"
+                }
             }
         }
     }
 }
-
