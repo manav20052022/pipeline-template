@@ -6,31 +6,21 @@ pipeline {
             kind: Pod
             spec:
               containers:
-              - name: jnlp
-                image: jenkins/inbound-agent:4.10-1
-                args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
-              - name: build
-                image: maven:3.8.1-jdk-11
+              - name: busybox
+                image: busybox
                 command:
                 - cat
                 tty: true
             """
         }
     }
-
+    
     stages {
-        stage('Build') {
+        stage('Run on Kubernetes') {
             steps {
-                container('build') {
-                    sh 'mvn --version'
-                }
-            }
-        }
-
-        stage('Test') {
-            steps {
-                container('build') {
-                    sh 'mvn test'
+                container('busybox') {
+                    sh 'echo "Running on Kubernetes!"'
+                    sh 'uname -a'
                 }
             }
         }
